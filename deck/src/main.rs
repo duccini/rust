@@ -1,9 +1,14 @@
+use rand::{rng, seq::SliceRandom};
+
 #[derive(Debug)]
 struct Deck {
-    cards: Vec<String>
+  cards: Vec<String>
 }
 
-fn main() {
+// Inherent Implementation
+// self is a reference to whatever type is mentioned in the parent implementation block
+impl Deck {
+  fn new() -> Self {
     // List of 'suits' - 'hearts', 'spades'
     let suits = ["Hearts", "Spades", "Diamonds"];
 
@@ -14,14 +19,26 @@ fn main() {
 
     // Double nested for loop
     for suit in suits {
-        for value in values {
-            let card = format!("{} of {}", value, suit);
-            cards.push(card);
-        }
+      for value in values {
+        let card = format!("{} of {}", value, suit);
+        cards.push(card);
+      }
     }
 
     let deck = Deck { cards };
+    return deck;
+  }
 
-    println!("Heres your deck: {:#?}", deck);
+  fn shuffle(&self) {
+
+  }
+}
+
+fn main() {
+  let deck = Deck::new();
+
+  deck.shuffle();
+
+  println!("Heres your deck: {:#?}", deck);
 }
 
